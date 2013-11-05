@@ -1,0 +1,91 @@
+// Place all the styles related to the todos controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import 'reset';
+$value: 1em;
+$border: 1px solid;
+$width: 200px;
+$height: 40px;
+
+/* Styles for main page */
+#banner {
+  padding: {
+    top: $value;
+    bottom: $value;
+    left: $value;
+  }
+}
+
+#columns {
+  background: #F0FFF0;
+  padding-left: $value;
+}
+
+#side {
+  float: left;
+  padding: {
+    top: $value;
+    bottom: 2em;
+    left: $value;
+  }
+  border:{
+    top: $border;
+    bottom: $border;
+    left: $border;
+    right: $border;
+  }
+  width: 16em;
+  background: #DCDCDC;
+  a {
+    color: #800000;
+    font-weight: bold;
+    &:hover { color: blue; }
+  }
+}
+
+
+#main {
+  margin-left: 17em;
+  padding: {
+    top: 2em;
+    left: 2em;
+  }
+  h1 {
+    color: #333;
+    font: {
+      family: fantasy;
+      size: 3em;
+      weight: bold;
+    }
+    text-decoration: underline;
+  }
+}      
+
+.todos_table {
+  td {
+    width: $width;
+    height: $height;
+  }
+  th {
+    width: $width;
+    height: $height;
+    text:{
+      align: left;
+      decoration: underline;
+    }
+  }
+}
+
+.todo_form {
+  #todo_description {
+    height: 109px;
+    width: 227px;
+  }
+}
+
+.todo_back {
+  float: right;
+  margin: -25px 550px 0 0;
+}
+           

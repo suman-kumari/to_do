@@ -1,0 +1,36 @@
+<h1>Todos</h1>
+
+<table class="todos_table">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Complete?</th>
+      <th>Links</th>
+      <th></th>
+    </tr>
+  </thead>
+  
+  <tbody>
+    <% @todos.each do |todo| %>
+    <tr>
+      <td><%= todo.title %></td>
+      <td><%= truncate(strip_tags(todo.description),:length => 50) %></td>
+      <td>
+        <% if todo.completed %>
+        <input id="todo_completed" type="checkbox" value="true" name="todo[completed]" checked="checked">
+        <% else %>
+        <input id="todo_completed" type="checkbox" value="false" name="todo[completed]">
+        <% end %>
+      </td>
+      <td>
+        <%= link_to image_tag('/assets/edit.jpeg', width: '20', height: '20', alt: "Edit"), edit_todo_path(todo) %> | 
+        <%= link_to image_tag('/assets/destroy.png', width: '20', height: '20', alt: "Destroy"), todo, method: :delete, :id => "delete_todo_#{todo.id}", data: { confirm: 'Are you sure?' } %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+
