@@ -1,7 +1,7 @@
 class TodosController < ApplicationController
-before_action :set_todo, only: [:show, :edit, :update, :destroy]
+before_action :set_todo, only: [:edit, :update, :destroy]
  def index
-   @todos = Todo.all
+   @todos = Todo.paginate(:page => params[:page], :per_page => 5)
  end
 
  def new
@@ -20,12 +20,12 @@ before_action :set_todo, only: [:show, :edit, :update, :destroy]
  end
 
  def update
-   respond_to do |format|
-     if @todo.update(todo_params)
-       format.html { redirect_to todos_path }
-     else
-       format.html { render action: 'edit' }
-     end
+   if request.xhr?
+     @todo.update(completed: params[:completed])
+   elsif @todo.update(todo_params)
+     redirect_to todos_path
+   else
+     render action: 'edit'
    end
  end
 

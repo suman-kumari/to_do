@@ -1,0 +1,25 @@
+%h1 Todos
+%table.table.table-striped.table-bordered
+  %thead
+    %tr.success
+      %th Title
+      %th Description
+      %th Status
+      %th Links
+  %tbody
+    - @todos.each do |todo|
+      %tr
+        %td= todo.title
+        %td= truncate(strip_tags(todo.description),:length => 50)
+        %td{id: todo.id}
+          - if todo.completed
+            %input#todo_completed{checked: "checked", name: "todo[completed]", type: "checkbox", value: "true", class: "checkbox" }/
+          - else
+            %input#todo_completed{name: "todo[completed]", type: "checkbox", value: "false", class: "checkbox" }/
+        %td
+          = link_to '', edit_todo_path(todo), :class => "glyphicon glyphicon-edit"
+          |
+          = link_to '', todo, method: :delete, :id => "delete_todo_#{todo.id}", data: { confirm: 'Are you sure?' }, :class => "glyphicon glyphicon-remove"
+
+.pagination
+  = will_paginate @todos, renderer: BootstrapPagination::Rails

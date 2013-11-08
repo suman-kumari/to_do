@@ -1,16 +1,13 @@
 $(function() {
-  $("#todo_completed").click(function(){
-    var checked; 
-    if ($(this).is(':checked')) {
-      checked = true;
-    } 
-    else {
-      checked = false;
-    } 
+  $('.checkbox').change(function() {
+    var value = $(this).is(':checked');
+    var id = $(this).parent()[0].id;
+    $.ajax({
+      url: "todos/"+id,
+      type: "PATCH",
+      data: { completed: value },
+      dataType: "html"
+    });
   });
-  $.ajax({
-    type: "PUT",
-    url: "/todo/"#{todo.id}"",
-    data: { $(this).is(':checked') }
-  });  
 });
+

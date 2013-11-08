@@ -1,0 +1,58 @@
+@import "bootstrap";
+$dimgray: #0A0A0A;
+$black: #000;
+$blue: blue;
+
+body {
+    color: $dimgray;
+    padding-top: 70px; 
+    a {
+      color: $black;
+    }
+    h1 {
+      text-decoration: underline;
+    }
+    label {
+      margin-bottom: 10px;
+      color: $blue;
+    }
+}
+
+.controls {
+  textarea{ 
+    width: 175px; 
+    min-width:175px; 
+    max-height:175px; 
+    
+    height:110px; 
+    min-height:110px;  
+    max-height:110px;
+  }
+}
+
+.nav-pills{
+  li{
+    a {
+      color: #B8860B;
+    }
+  }
+}
+
+.navbar-header {
+  float: right;
+}
+
+.glyphicon {
+  top: 4px;
+}
+
+.table-bordered td {
+  color: #8B4789;
+}
+
+.form-horizontal {
+  .control-label {
+    color: $blue;
+  }
+}
+
