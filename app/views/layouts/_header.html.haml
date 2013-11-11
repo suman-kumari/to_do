@@ -7,7 +7,7 @@
         %li
           = link_to '', todos_path, :class => "glyphicon glyphicon-backward"
         %li
-          = link_to 'New todo', new_todo_path
+          = link_to 'New todo', new_todo_path, :remote => true, :class => "modal-form"
 .container
   = link_to image_tag("banner.jpeg"), todos_path 
   = yield 

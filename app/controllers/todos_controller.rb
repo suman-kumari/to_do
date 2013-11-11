@@ -6,6 +6,7 @@ before_action :set_todo, only: [:edit, :update, :destroy]
 
  def new
    @todo = Todo.new
+   render :layout => false
  end
 
  def create
@@ -27,6 +28,10 @@ before_action :set_todo, only: [:edit, :update, :destroy]
    else
      render action: 'edit'
    end
+ end
+
+ def edit
+   render :layout => false
  end
 
  def destroy

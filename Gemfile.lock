@@ -119,6 +119,7 @@ PLATFORMS
 DEPENDENCIES
   bootstrap-sass
   coffee-rails (~> 4.0.0)
+  execjs
   haml
   jbuilder (~> 1.2)
   jquery-rails

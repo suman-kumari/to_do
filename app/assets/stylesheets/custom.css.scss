@@ -1,7 +1,6 @@
 @import "bootstrap";
 $dimgray: #0A0A0A;
 $black: #000;
-$blue: blue;
 
 body {
     color: $dimgray;
@@ -14,7 +13,7 @@ body {
     }
     label {
       margin-bottom: 10px;
-      color: $blue;
+      color: $black;
     }
 }
 
@@ -52,7 +51,27 @@ body {
 
 .form-horizontal {
   .control-label {
-    color: $blue;
+    color: $black;
   }
 }
 
+#remote-modal {
+    display: block;
+    background-color: #F7F7F7;
+    width: 400px;
+    height: 400px;
+    top: 100px;
+    left: 400px;
+    padding-left: 20px;
+}
+
+.modal-header{
+    .close {
+	margin-top: 20px;
+    }
+}
+
+h1, .h1 {
+    font-size: 24px;
+    color: #838B8B;
+    }

@@ -6,8 +6,9 @@ $(function() {
       url: "todos/"+id,
       type: "PATCH",
       data: { completed: value },
-      dataType: "html"
+      dataType: "ajax"
     });
   });
 });
+
 

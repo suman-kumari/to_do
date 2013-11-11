@@ -17,7 +17,7 @@
           - else
             %input#todo_completed{name: "todo[completed]", type: "checkbox", value: "false", class: "checkbox" }/
         %td
-          = link_to '', edit_todo_path(todo), :class => "glyphicon glyphicon-edit"
+          = link_to '', edit_todo_path(todo), :class => "glyphicon glyphicon-edit", :remote => true
           |
           = link_to '', todo, method: :delete, :id => "delete_todo_#{todo.id}", data: { confirm: 'Are you sure?' }, :class => "glyphicon glyphicon-remove"
 
