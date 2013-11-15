@@ -6,7 +6,7 @@
       %th Description
       %th Privacy
       %th Status
-    
+      %th Links
   %tbody
     - @todos.each do |todo|
       %tr
@@ -17,14 +17,19 @@
             = "public"
           - elsif todo.privacy == false
             = "private"
-
+          
         %td{id: todo.id}
           - if todo.completed
             %input#todo_completed{checked: "checked", name: "todo[completed]", type: "checkbox", value: "true", class: "checkbox" }/
           - else
             %input#todo_completed{name: "todo[completed]", type: "checkbox", value: "false", class: "checkbox" }/
-      
-
+       
+        %td
+          = link_to '', edit_todo_path(todo), :class => "glyphicon glyphicon-edit", :remote => true
+          |
+          = link_to '', todo, method: :delete, data: { confirm: "are you sure" }, :class => "glyphicon glyphicon-remove"
+  
             
       
+
 

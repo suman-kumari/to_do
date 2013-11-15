@@ -1,0 +1,14 @@
+= form_tag({ :role => 'form'}, {:class => 'form-horizontal' }) do
+  %fieldset
+    %legend Sign in
+    .form-group
+      %label.col-sm-2.control-label{for: "email"} Email:
+      .col-sm-3
+        = text_field_tag :email, params[:email],:class => "form-control", :id => "inputEmail", :placeholder => "Email"
+    .form-group
+      %label.col-sm-2.control-label{for: "password"} Password:
+      .col-sm-3
+        = password_field_tag :password, params[:password], :class => "form-control", :id => "inputPassword", :placeholder => "Password"
+    .form-group
+      .col-sm-offset-2.col-sm-3
+        = button_tag "Sign in", :class => "btn btn-primary"

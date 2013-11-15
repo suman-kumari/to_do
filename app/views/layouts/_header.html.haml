@@ -4,11 +4,19 @@
       %ul.nav.nav-pills
         %li.active
           = link_to '', todos_path, :class => "glyphicon glyphicon-home"
-        %li
-          = link_to '', todos_path, :class => "glyphicon glyphicon-backward"
-        %li
-          = link_to 'New todo', new_todo_path, :remote => true, :class => "modal-form"
+       
+        - unless session[:user_id]
+          %li
+            = link_to 'Sign-up', new_user_path
+          %li
+            = link_to 'Sign-in', login_path
+
+        - if session[:user_id]
+          %li
+            = link_to '', new_todo_path, :class => "glyphicon glyphicon-plus-sign", :remote => true
+          %li
+            = link_to 'Logout', logout_path, :method => :delete 
 .container
-  = link_to image_tag("banner.jpeg"), todos_path 
+  = link_to image_tag("banner.jpeg"), todos_path
   = yield 
  

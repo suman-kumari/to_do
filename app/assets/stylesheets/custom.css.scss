@@ -74,4 +74,21 @@ body {
 h1, .h1 {
     font-size: 24px;
     color: #838B8B;
+}
+
+h4, .h4 {
+    font-size: 16px;
+}
+
+.form-horizontal {
+    fieldset {
+	background-color: #efe;
     }
+ legend {
+    color: #dfd;
+    background: #141;
+    font-family: sans-serif;
+    padding: 0.2em 1em;
+  }
+  
+}

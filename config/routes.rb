@@ -1,6 +1,18 @@
 ToDo::Application.routes.draw do
-  resources :todos
+  get "todos/index"
+  resources :users do
+    member do
+      get 'todo'
+    end
+  end
+  resources :todos 
 
+  controller :sessions do
+    get 'login' => :new
+    post 'login' => :create
+    delete 'logout' => :destroy
+  end
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
