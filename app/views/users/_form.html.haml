@@ -1,6 +1,6 @@
 = form_for @user, :html => { :class => 'form-horizontal well' } do |f|
   - if @user.errors.any?
-    #error_explanation
+    #error_explanation.alert-danger
       %h2
         = pluralize(@user.errors.count, "error")
         prohibited this list from being saved:

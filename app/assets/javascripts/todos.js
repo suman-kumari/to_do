@@ -1,14 +1,25 @@
-$(function() {
-  $('.checkbox').change(function() {
-    var value = $(this).is(':checked');
-    var id = $(this).parent()[0].id;
-    $.ajax({
-      url: "todos/"+id,
-      type: "PATCH",
-      data: { completed: value },
-      dataType: "ajax"
+$(document).ready(function(){
+    $('.checkbox').each(function(){
+	if ($(this).is(':checked'))
+	{
+	    $(this).parent().prev().prev().css("color", "red");
+	}
+	else
+	{
+	    $(this).parent().prev().prev().css("color", "black");
+	}
+
     });
-  });
+
+    $('.checkbox').click(function(){
+	if($(this).is(':checked'))
+	{
+	    $(this).parent().prev().prev().css("color", "red");
+	}
+	else
+	{
+	    $(this).parent().prev().prev().css("color", "black");
+	}
+	    
+    });
 });
-
-

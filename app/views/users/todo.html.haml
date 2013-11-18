@@ -1,3 +1,7 @@
+%div.alert-success
+  - if flash[:alert]
+    %p= flash[:alert]
+
 %h1 Todos
 %table.table.table-striped.table-bordered
   %thead

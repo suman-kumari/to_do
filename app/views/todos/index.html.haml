@@ -4,25 +4,13 @@
     %tr.success
       %th Title
       %th Description
-      %th Privacy
-      %th Status
-    
+         
   %tbody
     - @todos.each do |todo|
       %tr
         %td= todo.title
-        %td= truncate(strip_tags(todo.description),:length => 50)
-        %td
-          - if todo.privacy == true
-            = "public"
-          - elsif todo.privacy == false
-            = "private"
-
-        %td{id: todo.id}
-          - if todo.completed
-            %input#todo_completed{checked: "checked", name: "todo[completed]", type: "checkbox", value: "true", class: "checkbox" }/
-          - else
-            %input#todo_completed{name: "todo[completed]", type: "checkbox", value: "false", class: "checkbox" }/
+        %td= truncate(strip_tags(todo.description),:length => 120)
+       
       
 
             

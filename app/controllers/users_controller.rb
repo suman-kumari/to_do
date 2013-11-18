@@ -13,22 +13,20 @@ skip_before_filter :authorize, only: [:new, :create]
   def create
     @user = User.new(user_params)
     if @user.save
-       redirect_to users_path
+       redirect_to users_path, :alert => "user was successfully created"
     else
       render action: 'new' 
     end
   end
 
   def update
-    respond_to do |format|
-      if @user.update(user_params)
-        format.html { redirect_to(users_url) }
-      else
-        format.html { render action: 'edit' }
-      end
+    if @user.update(user_params)
+      redirect_to users_path, :alert => "user was successfully updated" 
+    else
+      render action: 'edit' 
     end
   end
-
+  
   def destroy
     @user.destroy
     redirect_to users_path

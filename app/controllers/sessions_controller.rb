@@ -9,7 +9,7 @@ skip_before_filter :authorize
       session[:user_id] = user.id
       redirect_to todo_user_path(user)
     else
-      redirect_to login_url
+      redirect_to login_url, :alert => "Invalid user/password combination"
     end
   end
   

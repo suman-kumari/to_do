@@ -17,7 +17,7 @@ showRemoteModal = {
 	var div = $("<div id='remote-modal' class='modal fade'>" + modalHeaderDiv + "<div class='modal-body'></div>" + footer + "</div>");
 	
 	div.find('.modal-body').load(url, heading, function(){
-	    $(this).find('input, textarea').placeholder();
+	    $(this).find('input, textarea');
 	});
 		
 	div

@@ -13,20 +13,18 @@ before_action :get_user, only: [:new, :create, :edit, :update, :destroy]
   
   def create
     @todo = @user.todos.build(todo_params)
-    respond_to do |format|
-      if @todo.save
-        format.html { redirect_to todo_user_path(@user) }
-      else
-        format.html { render action: 'new' }
-      end
+    if @todo.save
+      redirect_to todo_user_path(@user), :alert => "Todo was successfully created"
+    else
+      render action: 'new' 
     end
   end
-  
+ 
   def update
     if request.xhr?
       @todo.update(completed: params[:completed])
     elsif @todo.update(todo_params)
-      redirect_to todo_user_path(@user)
+      redirect_to todo_user_path(@user), :alert => "Todo was successfully updated"
     else
       render action: 'edit'
     end

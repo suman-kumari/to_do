@@ -2,8 +2,13 @@ require 'digest/sha2'
 class User < ActiveRecord::Base
   has_many :todos, :dependent => :destroy
   validates :first_name,:last_name, :presence => true
-  validates :email, :presence => true, :uniqueness => true
-  validates :password, :confirmation => true
+ 
+ VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  validates :email, presence: true,
+                    format: { with: VALID_EMAIL_REGEX },
+                    uniqueness: { case_sensitive: false }
+ 
+  validates :password, length: { minimum: 6 } , :confirmation => true
   attr_accessor :password_confirmation
   attr_reader :password
   validate :password_must_be_present

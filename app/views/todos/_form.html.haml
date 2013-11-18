@@ -1,6 +1,6 @@
 = form_for(@todo, :html => { method: :post, :class => 'form-horizontal' }) do |f|
   - if @todo.errors.any?
-    #error_explanation
+    #error_explanation.alert-danger
       %h2
         = pluralize(@todo.errors.count, "error")
         prohibited this list from being saved:
