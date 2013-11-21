@@ -1,17 +1,18 @@
 class TodosController < ApplicationController
 skip_before_filter :authorize
-before_action :set_todo, only: [:edit, :update, :destroy]
+before_action :set_todo, only: [:show, :edit, :update, :destroy]
 before_action :get_user, only: [:new, :create, :edit, :update, :destroy]
   def index
-    @todos = Todo.public
+    @todos = Todo.public.paginate(:page => params[:page], :per_page => 10)
   end  
   
   def new
     @todo = @user.todos.build
-    render :layout => false
+    #render layout: false
   end
   
   def create
+    puts todo_params
     @todo = @user.todos.build(todo_params)
     if @todo.save
       redirect_to todo_user_path(@user), :alert => "Todo was successfully created"
@@ -19,7 +20,10 @@ before_action :get_user, only: [:new, :create, :edit, :update, :destroy]
       render action: 'new' 
     end
   end
- 
+  
+  def show
+  end
+  
   def update
     if request.xhr?
       @todo.update(completed: params[:completed])
@@ -31,7 +35,7 @@ before_action :get_user, only: [:new, :create, :edit, :update, :destroy]
   end
   
   def edit
-    render :layout => false
+    #render layout: false
   end
 
   def destroy
@@ -51,7 +55,7 @@ before_action :get_user, only: [:new, :create, :edit, :update, :destroy]
   end
   
   def todo_params
-    params.require(:todo).permit(:title, :description, :completed, :privacy, :user_id)
+    params.require(:todo).permit(:title, :description, :completed, :privacy, :start_date_time, :end_date_time, :user_id)
   end
 end
 

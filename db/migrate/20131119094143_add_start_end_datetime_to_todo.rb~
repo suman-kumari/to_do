@@ -1,0 +1,6 @@
+class AddStartEndDatetimeToTodo < ActiveRecord::Migration
+  def change
+    add_column :todos, :start_date_time, :datetime
+    add_column :todos, :end_date_time, :datetime
+  end
+end

@@ -1,0 +1,20 @@
+%h2 Todo Details :
+%table.table.table-striped.table-bordered
+  %thead
+    %tr.success
+      %th Title
+      %th Description
+      %th Privacy
+      %th Status
+         
+  %tbody
+    %tr
+      %td= @todo.title
+      %td= truncate(strip_tags(@todo.description),:length => 70)
+      %td
+        - if @todo.privacy == true
+          = "public"
+        - elsif @todo.privacy == false
+          = "private"
+      %td= @todo.completed
+  

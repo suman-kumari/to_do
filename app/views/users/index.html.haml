@@ -21,3 +21,5 @@
           |
           \#{link_to '', user, method: :delete, :id => "delete_user_#{user.id}", data: { confirm: 'Are you sure?' }, :class => "glyphicon glyphicon-remove"}
 %br/
+
+= will_paginate @users, renderer: BootstrapPagination::Rails

@@ -1,9 +1,9 @@
 class UsersController < ApplicationController
 before_action :set_user, only: [:edit, :update, :destroy, :todo]
-skip_before_filter :authorize, only: [:new, :create]
+skip_before_filter :authorize, only: [:new, :create, :index]
 
   def index
-    @users = User.all
+    @users = User.paginate(:page => params[:page], :per_page => 5)
   end
 
   def new
@@ -33,7 +33,7 @@ skip_before_filter :authorize, only: [:new, :create]
   end
 
   def todo
-    @todos = @user.todos
+    @todos = @user.todos.paginate(:page => params[:page], :per_page => 10)
   end
   
   private

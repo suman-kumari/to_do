@@ -10,11 +10,13 @@
       %th Description
       %th Privacy
       %th Status
+      %th Start time
+      %th End time
       %th Links
   %tbody
     - @todos.each do |todo|
-      %tr
-        %td= todo.title
+      %tr{id: todo.id}
+        %td=  link_to todo.title, todo
         %td= truncate(strip_tags(todo.description),:length => 50)
         %td
           - if todo.privacy == true
@@ -22,18 +24,24 @@
           - elsif todo.privacy == false
             = "private"
           
-        %td{id: todo.id}
+        %td
           - if todo.completed
             %input#todo_completed{checked: "checked", name: "todo[completed]", type: "checkbox", value: "true", class: "checkbox" }/
           - else
             %input#todo_completed{name: "todo[completed]", type: "checkbox", value: "false", class: "checkbox" }/
+        - if todo.start_date_time.present?               
+          %td= todo.start_date_time.strftime("%d %B %Y")
+        - else
+          %td= todo.start_date_time
        
+        - if todo.end_date_time.present?
+          %td= todo.end_date_time.strftime("%d %B %Y")
+        - else
+          %td= todo.end_date_time
         %td
           = link_to '', edit_todo_path(todo), :class => "glyphicon glyphicon-edit", :remote => true
           |
           = link_to '', todo, method: :delete, data: { confirm: "are you sure" }, :class => "glyphicon glyphicon-remove"
   
-            
-      
 
-
+= will_paginate @todos, renderer: BootstrapPagination::Rails      

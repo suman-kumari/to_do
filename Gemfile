@@ -6,6 +6,7 @@ gem 'rails', '4.0.0'
 
 # Use mysql as the database for Active Record
 gem 'mysql2'
+gem 'thin'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
@@ -55,3 +56,23 @@ gem "haml"
 gem 'will_paginate-bootstrap'
 
 gem 'execjs'
+
+gem 'mini_fb'
+
+gem 'annotate', :git => 'git://github.com/ctran/annotate_models.git'
+
+gem 'jquery-ui-rails'
+
+group :development, :test do
+  gem 'rspec-rails', '2.13.1'
+end
+
+group :test do
+  gem 'shoulda-matchers'    
+  gem 'capybara', '2.1.0'
+  gem 'launchy'     
+  gem 'selenium-webdriver'             
+  gem 'faker'
+  gem 'database_cleaner', '~> 0.6.7'	 
+  gem 'factory_girl_rails', '4.2.1'
+end

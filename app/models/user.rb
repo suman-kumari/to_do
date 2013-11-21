@@ -1,14 +1,28 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id              :integer          not null, primary key
+#  first_name      :string(255)
+#  last_name       :string(255)
+#  email           :string(255)
+#  hashed_password :string(255)
+#  salt            :string(255)
+#  created_at      :datetime
+#  updated_at      :datetime
+#
+
 require 'digest/sha2'
 class User < ActiveRecord::Base
   has_many :todos, :dependent => :destroy
   validates :first_name,:last_name, :presence => true
  
- VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, presence: true,
                     format: { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false }
  
-  validates :password, length: { minimum: 6 } , :confirmation => true
+  validates :password, presence: true, length: { minimum: 6 } , :confirmation => true
   attr_accessor :password_confirmation
   attr_reader :password
   validate :password_must_be_present
@@ -42,6 +56,3 @@ class User < ActiveRecord::Base
     self.salt = self.object_id.to_s + rand.to_s
   end
 end
-
-
- 

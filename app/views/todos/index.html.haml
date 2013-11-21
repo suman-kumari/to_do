@@ -1,18 +1,27 @@
+%div.alert-success
+  - if flash[:alert]
+    %p= flash[:alert]
+
 %h1 Todos
 %table.table.table-striped.table-bordered
   %thead
     %tr.success
       %th Title
       %th Description
-         
+      %th Start Time
+      %th End Time
+     
   %tbody
     - @todos.each do |todo|
       %tr
-        %td= todo.title
+        %td= link_to todo.title, todo
         %td= truncate(strip_tags(todo.description),:length => 120)
+        - if todo.start_date_time.present?               
+          %td= todo.start_date_time.strftime("%d %B %Y")
+        - else
+          %td= todo.start_date_time
+        - if todo.end_date_time.present?
+          %td= todo.end_date_time.strftime("%d %B %Y")
+        - else
+          %td= todo.end_date_time
        
-      
-
-            
-      
-
