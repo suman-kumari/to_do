@@ -6,7 +6,8 @@
       %th Description
       %th Privacy
       %th Status
-         
+      %th Start Date
+      %th End Date
   %tbody
     %tr
       %td= @todo.title
@@ -17,4 +18,5 @@
         - elsif @todo.privacy == false
           = "private"
       %td= @todo.completed
-  
+      %td= @todo.start_date_time
+      %td= @todo.end_date_time

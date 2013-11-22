@@ -61,6 +61,8 @@ gem 'mini_fb'
 
 gem 'annotate', :git => 'git://github.com/ctran/annotate_models.git'
 
+gem 'activeadmin', github: 'gregbell/active_admin'
+
 gem 'jquery-ui-rails'
 
 group :development, :test do
@@ -73,6 +75,6 @@ group :test do
   gem 'launchy'     
   gem 'selenium-webdriver'             
   gem 'faker'
-  gem 'database_cleaner', '~> 0.6.7'	 
+  gem 'database_cleaner', '~> 1.2.0'	 
   gem 'factory_girl_rails', '4.2.1'
 end
